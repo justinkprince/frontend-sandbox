@@ -1,0 +1,32 @@
+/**
+ * One column pages
+ */
+.content, // Fallback to a single column layout if one is not explicitly defined.
+.page-type-placeholder {
+    @include one-column;
+}
+
+/**
+ * Two column with a RIGHT rail pages
+ */
+.page-type-product-detail,
+.page-type-download,
+.page-type-post-download-redirect,
+.page-type-blog-listing,
+.page-type-blog-article {
+    @include two-column-right-rail;
+}
+
+/**
+ * Two column with a LEFT rail pages
+ */
+.page-type-placeholder {
+    @include two-column-left-rail;
+}
+
+/**
+ * Three column pages
+ */
+.page-type-product-listing {
+    @include three-column;
+}

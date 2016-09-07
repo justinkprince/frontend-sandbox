@@ -1,0 +1,25 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block content_wrap %}
+    <div class="content">
+        {% block content %}
+            {% if block('aside_1') %}
+                <aside class="aside-1">
+                    {{ block('aside_1')|trim|raw }}
+                </aside>
+            {% endif %}
+
+            {% block main_wrap %}
+                <main class="main">
+                    {% block main %}{% endblock %}
+                </main>
+            {% endblock main_wrap %}
+
+            {% if block('aside_2') %}
+                <aside class="aside-2">
+                    {{ block('aside_2')|trim|raw }}
+                </aside>
+            {% endif %}
+        {% endblock content %}
+    </div>
+{% endblock %}

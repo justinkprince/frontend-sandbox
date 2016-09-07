@@ -1,0 +1,13 @@
+.content {
+    @include container;
+    max-width: none;
+    padding: 0 $mobile-padding;
+}
+
+@include susy-breakpoint($bp-small) {
+    .content {
+        padding: 0;
+        max-width: 1170px;
+        background: #eee;
+    }
+}

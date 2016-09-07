@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{% block lang -%}{{ lang|default('en') }}{%- endblock %}" {{ html_attr|default('')|raw }} class="{% block html_class -%}{{ html_class|default('no-js') }}{%- endblock %}">
+    <head {{ head_attr|default('')|raw }}>
+        {% block head %}
+            {% block meta %}
+                <meta charset="{% block meta_charset -%}{{ meta_charset|default('utf-8') }}{%- endblock %}">
+
+                <meta name="viewport" content="{% block meta_viewport -%}
+                    {{ meta_viewport|default('width=device-width, initial-scale=1') }}
+                {%- endblock %}">
+
+                {% if block('meta_robots') %}
+                    <meta name="robots" content="{{ block('meta_robots')|trim }}">
+                {% endif %}
+
+                {% if block('meta_description') %}
+                    <meta name="description" content="{{ block('meta_description')|trim }}">
+                {% endif %}
+
+                {% if block('meta_keywords') %}
+                    <meta name="keywords" content="{{ block('meta_keywords')|trim }}">
+                {% endif %}
+
+                {% if block('meta_nextprev') %}
+                    {{ block('meta_nextprev')|trim|raw }}
+                {% endif %}
+
+                {% block og_tags %}{% endblock %}
+            {% endblock meta %}
+
+            <title>
+                {%- block title_wrap -%}
+                    {{ title_prefix|default('') }}
+                    {%- block title -%}
+                    {%- endblock -%}
+                    {{ title_suffix|default('') }}
+                {%- endblock -%}
+            </title>
+
+            {% block favicon -%}
+                <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+            {% endblock %}
+
+            {% block stylesheets %}
+                <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+            {% endblock %}
+
+            {% block javascripts %}
+            {% endblock %}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{{ body_class|default }}{% endblock %}" {{ body_attr|default('')|raw }}>
+        {% block body -%}
+            {% block page_header %}
+                {% include 'partial/header.html.twig' %}
+            {% endblock %}
+
+            {% block content_wrap %}
+                {% block content %}{% endblock %}
+            {% endblock %}
+
+            {% block page_footer %}
+                {% include 'partial/footer.html.twig' %}
+            {% endblock %}
+
+            {% block overflow %}{% endblock %}
+
+            {% block body_javascript %}
+                <script src="{{ asset('js/main.js') }}"></script>
+            {% endblock %}
+        {%- endblock body %}
+    </body>
+</html>

@@ -1,0 +1,36 @@
+//////////////////////////////////////////////////////////////////////////////
+// These first few imports load files that do not generate any CSS output.  //
+//////////////////////////////////////////////////////////////////////////////
+
+// Load all configuration settings.
+@import 'config/all';
+
+// Load all third-party libraries.
+@import 'vendor/susy';
+@import 'vendor/normalize';
+
+// Load all mixins.
+@import 'mixin/all';
+
+
+////////////////////////////////////////////
+// Begin importing files that output CSS. //
+////////////////////////////////////////////
+
+// Normalize all default browser styles.
+@include normalize();
+
+// Layout styles affect global page elements (header, footer, content blocks, etc.)
+// and site wide styles not covered by Normalize. It also assigns layouts (columns)
+// to individual page types.
+@import 'layout/all';
+
+// Component styles.
+@import 'component/all';
+
+// Page-specific styles.
+@import 'page-type/all';
+
+// A file to TEMPORARILY store overrides. Ideally, this will be empty.
+// It may prove useful for development/debugging and workarounds.
+@import 'shame';

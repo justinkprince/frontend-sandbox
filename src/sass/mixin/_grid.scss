@@ -1,0 +1,173 @@
+/**
+ * Since the styles are mobile-first, most of the one-column settings
+ * are ready to go by default.
+ */
+@mixin one-column {
+    .main {
+        @include span(12);
+    }
+}
+
+/**
+ * The two-column mixin defaults to a two-column with right rail configuration
+ * for the purpose of reusability. It is best to use one of the more explicit
+ * mixins.
+ */
+@mixin two-column-right-rail {
+    .page-header {
+        display: none;
+    }
+
+    .aside-2 {
+        display: none;
+    }
+
+    @include susy-breakpoint($bp-xsmall) {
+        .content {
+            @include layout($map-xsmall);
+            @include container;
+        }
+    }
+
+    @include susy-breakpoint($bp-small) {
+        .content {
+            @include layout($map-small);
+            @include container;
+        }
+
+        .main {
+            @include span(4);
+        }
+
+        .aside-1 {
+            @include span(4);
+        }
+    }
+
+    @include susy-breakpoint($bp-medium) {
+        .page-header {
+            display: block;
+        }
+
+        .content {
+            @include layout($map-medium);
+            @include container;
+        }
+
+        .main {
+            @include span(8);
+        }
+
+        .aside-1 {
+            @include span(4 last);
+        }
+    }
+
+    @include susy-breakpoint($bp-large) {
+        .content {
+            @include layout($map-large);
+            @include container;
+        }
+
+        .main {
+            @include span(8);
+        }
+
+        .aside-1 {
+            @include span(4 last);
+            background: #f00 !important;
+        }
+
+        .aside-2 {
+            display: none;
+        }
+    }
+}
+
+@mixin two-column-left-rail {
+    @include two-column-right-rail;
+
+    @include susy-breakpoint($bp-xsmall) {
+        .main {
+            @include span(8 last);
+        }
+
+        .aside-1 {
+            @include span(4 first);
+        }
+    }
+
+    @include susy-breakpoint($bp-small) {
+        .main {
+            @include span(8 last);
+        }
+
+        .aside-1 {
+            @include span(4 first);
+        }
+    }
+
+    @include susy-breakpoint($bp-medium) {
+        .main {
+            @include span(8 last);
+        }
+
+        .aside-1 {
+            @include span(4 first);
+        }
+    }
+
+    @include susy-breakpoint($bp-large) {
+        .main {
+            @include span(8 last);
+        }
+
+        .aside-1 {
+            @include span(4 first);
+        }
+    }
+}
+
+@mixin three-column {
+    @include susy-breakpoint($bp-medium) {
+        .content {
+            @include layout($map-medium);
+            @include container;
+        }
+
+        .main {
+            @include span(6);
+            padding-left: 20px;
+        }
+
+        .aside-1 {
+            @include span(2 wide);
+            margin-right: 0;
+        }
+
+        .aside-2 {
+            @include span(4 last);
+        }
+    }
+
+    @include susy-breakpoint($bp-large) {
+        .content {
+            @include layout($map-large);
+            @include container;
+        }
+
+        .main {
+            @include span(7);
+            margin-right: 0;
+            padding-right: 30px;
+        }
+
+        .aside-1 {
+            @include span(2);
+        }
+
+        .aside-2 {
+            @include span(3 wide last);
+        }
+    }
+}
